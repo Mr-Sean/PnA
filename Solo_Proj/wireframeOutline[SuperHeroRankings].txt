@@ -1,0 +1,35 @@
+Name: Sean Starks
+Project Title: Superhero Rankings
+Project Stack: P&A
+GitHub Repo Link: https://github.com/Mr-Sean/PnA
+
+Project Description: A superhero ranking website where users can register, login, add, edit and rate their favorite heroes on a scale of 1 to 5. 
+They can also delete the superhero if he/she ever becomes a super villian.
+
+New Programming Concept(s) I'm Planning to Learn: 
+
+Week 1 Features (to show at Review during Week 2)
+- Sign up for a group (https://docs.google.com/spreadsheets/d/1x9PRE-xviP4N-jjPWlFNkNycPIzgeYyQKphdLFeaxGs/edit#gid=0)
+- Schedule a Review during Week 2 (https://calendly.com/zpieper/solo-project-sprint)
+- Create GitHub repo for project
+- Create a .gitignore file for my project for my GitHub repo (enter in React, Python, or Java at https://www.toptal.com/developers/gitignore)
+- Finish this completed txt file and create project wireframe using Balsamiq (https://balsamiq.com/wireframes/) [Drawings and other wireframe programs also accepted!]
+- Email Zack this completed txt file, and project wireframe for approval
+- Submit completed wireframe on platform (https://login.codingdojo.com/m/97/6237/44911)
+- Complete Arrays To Do 1 & Arrays To Do 2 assignments
+
+- I'll need to learn how to implement Login and Registrations in MERN. I've previously only done this in Java and Python.
+- I'll need to learn an algo to sort the heroes in order of the fan rankings
+
+
+Week 2 Features (to show at first office hour/lecture of Week 3)
+- Schedule my time for my presentation (https://docs.google.com/spreadsheets/d/1x9PRE-xviP4N-jjPWlFNkNycPIzgeYyQKphdLFeaxGs/edit#gid=414986054)
+- Begin to talk with group about project ideas and what skills I bring to the table
+- Complete Singly Linked Lists Fronts & Display assignments
+- ***Finish CSS work (could be Bootstrap or another framework too instead of CSS)***
+
+- I'll need to learn Bootstrap or Tailwind in order to beautify the page.
+
+
+Product Backlog (If I have more time after completing my MVP, I'll start to work on...)
+- Perhaps I could add a Supervillian Rankings database where a hero becoming a villian (or vice versa) would simple be moved to the other database instead of being deleted outright.
