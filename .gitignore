@@ -1,0 +1,56 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+FullStack/.gitignore
+FullStack/pet_shelter.zip
+FullStack/F1_Core_11/.gitignore
+FullStack/F2_Core_13/authors/client/src/components/AllAuthors.js
+FullStack/pet_shelter/client/.gitignore
+FullStack/pet_shelter/client/package-lock.json
+FullStack/pet_shelter/client/package.json
+FullStack/pet_shelter/client/README.md
+FullStack/pet_shelter/client/public/favicon.ico
+FullStack/pet_shelter/client/public/index.html
+FullStack/pet_shelter/client/public/logo192.png
+FullStack/pet_shelter/client/public/logo512.png
+FullStack/pet_shelter/client/public/manifest.json
+FullStack/pet_shelter/client/public/robots.txt
+FullStack/pet_shelter/client/src/App.css
+FullStack/pet_shelter/client/src/App.js
+FullStack/pet_shelter/client/src/App.test.js
+FullStack/pet_shelter/client/src/index.css
+FullStack/pet_shelter/client/src/index.js
+FullStack/pet_shelter/client/src/logo.svg
+FullStack/pet_shelter/client/src/reportWebVitals.js
+FullStack/pet_shelter/client/src/setupTests.js
+FullStack/pet_shelter/client/src/components/AllPets.js
+FullStack/pet_shelter/client/src/components/EditPet.js
+FullStack/pet_shelter/client/src/components/NewPet.js
+FullStack/pet_shelter/client/src/components/OnePet.js
+FullStack/pet_shelter/server/package-lock.json
+FullStack/pet_shelter/server/package.json
+FullStack/pet_shelter/server/server.js
+FullStack/pet_shelter/server/config/mongoose.config.js
+FullStack/pet_shelter/server/controllers/pet.controller.js
+FullStack/pet_shelter/server/models/pet.model.js
+FullStack/pet_shelter/server/routes/pet.routes.js
