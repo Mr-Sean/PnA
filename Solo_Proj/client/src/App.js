@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import {Router} from '@reach/router';
+// import { Router } from 'react-router-dom';
+
+import AllHeroes from './components/AllHeroes';
+import OneHero from './components/OneHero';
+import NewHero from './components/NewHero';
+import EditHero from './components/EditHero';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <AllHeroes path="/"/>
+        <OneHero path="/:id"/>
+        <NewHero path="/new"/>
+        <EditHero path="/edit/:id"/>
+      </Router>
+      
     </div>
   );
 }
