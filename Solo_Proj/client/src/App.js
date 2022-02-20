@@ -12,10 +12,10 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <AllHeroes path="/"/>
-        <OneHero path="/:id"/>
-        <NewHero path="/new"/>
-        <EditHero path="/edit/:id"/>
+        <AllHeroes path="/" />
+        <OneHero path="/:id" />
+        <NewHero path="/new" />
+        <EditHero path="/edit/:id" />
       </Router>
       
     </div>

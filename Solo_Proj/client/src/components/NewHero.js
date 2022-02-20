@@ -55,13 +55,14 @@ const NewHero = (props) => {
                         <label htmlFor="heroName">Hero Name: </label>
                         <input value={heroName} name="heroName" type="text" 
                             onChange = {(e) => setHeroName(e.target.value)} />
-                        <br />
                             {
-                            errors.heroName ? 
-                            <span>{errors.heroName.message}</span> 
-                            : null
+                                errors.heroName ? 
+                                <span>{errors.heroName.message}</span> 
+                                : null
                             }
-                    </div>       
+                    </div>
+
+                    <br />
        
                     <div>
                         <label htmlFor="heroOrigin">Hero Origin: </label>
@@ -83,8 +84,8 @@ const NewHero = (props) => {
                             onChange = {(e) => setHeroPowers(e.target.value)} />
                         <br />
                             {
-                            errors.heroOrigin ? 
-                            <span>{errors.heroOrigin.message}</span> 
+                            errors.heroPowers ? 
+                            <span>{errors.heroPowers.message}</span> 
                             : null
                             }
                     </div>      
