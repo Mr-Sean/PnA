@@ -6,4 +6,4 @@ module.exports = (app) => {
     app.get("/api/heroes/:id", HeroController.getOneHero);
     app.put("/api/heroes/:id", HeroController.editHero);
     app.delete("/api/heroes/:id", HeroController.deleteHero);
-}
+};
