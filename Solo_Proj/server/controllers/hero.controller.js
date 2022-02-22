@@ -1,8 +1,22 @@
 const Hero = require("../models/hero.model");
+const jwt = require("jsonwebtoken");
+const User = require("../models/user.model");
+const heroRoutes = require("../routes/hero.routes");
 
 module.exports = {
     createHero: (req, res) => {
-        Hero.create(req.body)
+
+        const newHeroObject = new Hero(req.body);
+
+        // const decodedJWT = jwt.decode(req.cookies.userToken,{
+        //     complete: true
+        // })
+        // newHeroObject.createdBy = decodedJWT.payload.id
+
+        // Shorter version of above code using jwtPayload in jwt.config
+        newHeroObject.createdBy = req.jwtPayload.id;
+        
+        newHeroObject.save()
             .then((newHero) => {
                 console.log(newHero);
                 res.json(newHero)
@@ -27,6 +41,7 @@ module.exports = {
     
     getAllHeroes: (req, res) => {
         Hero.find({}).collation({locale:"en", strength: 2}).sort({HeroName:1})
+            .populate("createdBy", "username email")
             .then((allHeroes) => {
                 res.json(allHeroes)
             })
@@ -62,5 +77,37 @@ module.exports = {
                 res.status(400).json(err);
             })
     },
+
+    findAllHeroesByUser: (req, res) => {
+        if(req.jwtPayload.username !== req.params.username) {
+            User.findOne({username: req.params.username})
+                .then((userNotLoggedIn) => {
+                    Hero.find({createdBy: userNotLoggedIn._id})
+                        .then((allHeroesFromUser) => {
+                            console.log(allHeroesFromUser);
+                            res.json(allHeroesFromUser);
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                            res.status(400).json(err);
+                        })
+                })
+                .catch((err) => {
+                    console.log(err);
+                    res.status(400).json(err);
+                })
+        }
+        else {
+            Hero.find({createdBy: req.jwtPayload.id})
+                .then((allHeroesFromLoggedInUser) => {
+                    console.log(allHeroesFromLoggedInUser);
+                    res.json(allHeroesFromLoggedInUser);
+                })
+                .catch((err) => {
+                    console.log(err);
+                    res.status(400).json(err);
+                })
+        }
+    }
 
 }

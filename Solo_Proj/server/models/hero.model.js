@@ -25,6 +25,11 @@ const HeroSchema = new mongoose.Schema({
         required:  [true, "Hero needs a Picture!"]
     },
 
+    createdBy: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }
+
    
 }, {timestamps: true});
 

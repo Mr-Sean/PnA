@@ -13,6 +13,8 @@ app.use(cors({
     origin:"http://localhost:3000"
 }));
 
+// Configuring the server to accept and update cookies
+// and helps decode the contents of said cookies
 app.use(cookieParser());
 
 require("./config/mongoose.config");

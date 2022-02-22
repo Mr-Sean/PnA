@@ -102,16 +102,36 @@ module.exports = {
     },
 
 
-    getOneUser: (req, res) => {
-        User.findOne({ _id: req.params.id })
-            .then((oneUser) => {
-                console.log(oneUser);
-                res.json(oneUser);
+    // getOneUser: (req, res) => {
+    //     User.findOne({ _id: req.params.id })
+    //         .then((oneUser) => {
+    //             console.log(oneUser);
+    //             res.json(oneUser);
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //             res.status(400).json(err);
+    //         });
+    // },
+
+    getLoggedInUser: (req, res) => {
+        // const decodedJWT = jwt.decode(req.cookies.userToken, { complete: true });
+        // User.findOne({ _id: decodedJWT.payload.id })
+        User.findOne({ _id: req.jwtPayload.id })
+            .then(user => res.json(user))
+            .catch(err => res.json(err))
+    },
+
+
+    findAllUsers: (req, res) => {
+        User.find()
+            .then((allUsers) => {
+                res.json(allUsers);
             })
             .catch((err) => {
-                console.log(err);
-                res.status(400).json(err);
-            });
+                console.log("Find All Users FAILED");
+                res.json({ message: "Something went wrong in findAll", error: err })
+            })
     },
 
 
