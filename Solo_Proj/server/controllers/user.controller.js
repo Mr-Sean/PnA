@@ -45,7 +45,7 @@ module.exports = {
                             if(isPasswordValid) {
                                 console.log("Password is Valid");
                                 res.cookie(
-                                    "userToken",
+                                    "usertoken",
                                     jwt.sign(
                                         {
                                             // Payload is the data we want to save
@@ -95,7 +95,7 @@ module.exports = {
 
     logout: (req, res) => {
         console.log("Logging Out");
-        res.clearCookie("userToken");
+        res.clearCookie("usertoken");
         res.json({
             message: "You have successfully Logged Out",
         });
@@ -115,9 +115,9 @@ module.exports = {
     // },
 
     getLoggedInUser: (req, res) => {
-        // const decodedJWT = jwt.decode(req.cookies.userToken, { complete: true });
+        // const decodedJWT = jwt.decode(req.cookies.usertoken, { complete: true });
         // User.findOne({ _id: decodedJWT.payload.id })
-        User.findOne({ _id: req.jwtPayload.id })
+        User.findOne({ _id: req.jwtpayload.id })
             .then(user => res.json(user))
             .catch(err => res.json(err))
     },

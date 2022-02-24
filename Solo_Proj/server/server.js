@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 // Allows frontend @ port 3000 to make calls to backend @ port 8000.
 // Taking it away will result in "cors errors" when attempting your axios calls!
 app.use(cors({
+    credentials: true,
     origin:"http://localhost:3000"
 }));
 

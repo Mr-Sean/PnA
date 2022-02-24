@@ -8,13 +8,13 @@ module.exports = {
 
         const newHeroObject = new Hero(req.body);
 
-        // const decodedJWT = jwt.decode(req.cookies.userToken,{
+        // const decodedJWT = jwt.decode(req.cookies.usertoken,{
         //     complete: true
         // })
         // newHeroObject.createdBy = decodedJWT.payload.id
 
-        // Shorter version of above code using jwtPayload in jwt.config
-        newHeroObject.createdBy = req.jwtPayload.id;
+        // Shorter version of above code using jwtpayload in jwt.config
+        newHeroObject.createdBy = req.jwtpayload.id;
         
         newHeroObject.save()
             .then((newHero) => {
@@ -79,10 +79,11 @@ module.exports = {
     },
 
     findAllHeroesByUser: (req, res) => {
-        if(req.jwtPayload.username !== req.params.username) {
+        if(req.jwtpayload.username !== req.params.username) {
             User.findOne({username: req.params.username})
                 .then((userNotLoggedIn) => {
                     Hero.find({createdBy: userNotLoggedIn._id})
+                        .populate("createdBy", "username")
                         .then((allHeroesFromUser) => {
                             console.log(allHeroesFromUser);
                             res.json(allHeroesFromUser);
@@ -91,22 +92,23 @@ module.exports = {
                             console.log(err);
                             res.status(400).json(err);
                         })
-                })
-                .catch((err) => {
-                    console.log(err);
-                    res.status(400).json(err);
-                })
-        }
-        else {
-            Hero.find({createdBy: req.jwtPayload.id})
-                .then((allHeroesFromLoggedInUser) => {
-                    console.log(allHeroesFromLoggedInUser);
-                    res.json(allHeroesFromLoggedInUser);
-                })
-                .catch((err) => {
-                    console.log(err);
-                    res.status(400).json(err);
-                })
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        res.status(400).json(err);
+                    })
+                }
+                else {
+                    Hero.find({createdBy: req.jwtpayload.id})
+                        .populate("createdBy", "username")
+                        .then((allHeroesFromLoggedInUser) => {
+                            console.log(allHeroesFromLoggedInUser);
+                            res.json(allHeroesFromLoggedInUser);
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                            res.status(400).json(err);
+                    })
         }
     }
 

@@ -14,7 +14,7 @@ const OneHero = (props) => {
         axios
             .get(`http://localhost:8000/api/heroes/${id}`)
             .then((response) => {
-                console.log(response.data)
+                console.log(response.data);
                 setHeroInfo(response.data);
             })
             .catch((err) => console.log(err));
@@ -26,7 +26,7 @@ const OneHero = (props) => {
             .delete(`http://localhost:8000/api/heroes/${idFromBelow}`)
             .then((res) => {
                 console.log(res.data);
-                navigate("/");
+                navigate("/home");
             })
             .catch((err) => {
                 console.log(err);
@@ -38,7 +38,7 @@ const OneHero = (props) => {
         <div>
             <header>
                 <h1>Superhero Rankings</h1>
-                <Link to={"/"}>back to home</Link>
+                <Link to={"/home"}>back to home</Link>
                 <h2>Details about: {heroInfo.heroName}</h2>
             </header>
             

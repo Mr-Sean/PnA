@@ -24,11 +24,13 @@ const NewHero = (props) => {
             heroOrigin,
             heroPowers,
 
-        })
+        },
+        {withCredentials: true}
+        )
         .then((res) => {
             console.log(res);
             console.log(res.data);
-            navigate("/");
+            navigate("/home");
             // Route("/");
         })
         .catch((err) => {

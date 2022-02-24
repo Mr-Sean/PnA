@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 module.exports = {
 
     authenticate(req, res, next) {
-        jwt.verify(req.cookies.userToken,
+        jwt.verify(req.cookies.usertoken,
             process.env.JWT_SECRET,
             (err, payload) => {
                 if(err) {
@@ -12,7 +12,7 @@ module.exports = {
                 }
                 else {
                     console.log(payload);
-                    req.jwtPayload = payload;
+                    req.jwtpayload = payload;
                     next()
                 }
             }
