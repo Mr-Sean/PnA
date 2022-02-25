@@ -31,7 +31,7 @@ const Login = (props) => {
                 // Documentation: https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
                 // localStorage will allow us to store this current user's id in storage. This way, we can use it on a button for the current user to get to their profile page.
                 // localStorage.setItem("userId", res.data.userId);
-                // Utilizing navigate's second arrgument to pass our userId forward
+                // Utilizing navigate's second argument to pass our userId forward
                 //Documentation: https://reach.tech/router/api/navigate
                 navigate("/home", { state: { idForNav: res.data.userId } });
                 // navigate("/home")

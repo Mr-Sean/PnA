@@ -1,14 +1,15 @@
 import React, {useState, useEffect} from "react";
 import {Link, navigate} from "@reach/router";
-// import {Link, navigate} from "react-router-dom";
 // import {Link, Route} from "react-router-dom";
 import axios from "axios";
 
-const AllHeroes = (props) => {
+const AllHeroes = () => {
 
     const [heroList, setHeroList] = useState([]);
 
-    const {user, setUser} = useState({});
+    // const {user, setUser} = useState({});
+    const [user, setUser] = useState(null);
+    
 
     
     useEffect(() => {
@@ -34,6 +35,7 @@ const AllHeroes = (props) => {
             })
             .catch((err) => {
                 console.log(err);
+                navigate("/");
             })
     },[])
 
@@ -74,7 +76,19 @@ const AllHeroes = (props) => {
                 <h2>Behold, Our Mighty Pantheon of Heroes!!!</h2>
                 
                 <Link to={"/new"}>Add a NEW HERO</Link>
+
                 {/* <Link to={`/user/profile/${user.username}`}>{user.username} Profile</Link> */}
+                
+                { user ?
+                <div>
+                    <Link to={`/user/profile/${user.username}`}>{user.username} Profile</Link>
+                </div>
+                :
+                <div>
+                    User not logged in!
+                </div>
+            
+                }
                 <button onClick={logout}>Logout</button>
 
 
