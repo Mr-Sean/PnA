@@ -1,58 +1,38 @@
+// const mongoose = require('mongoose');
+// const User = require('./user.model');
 
+// //a rating question will contain scores
+// //this is the schema for scores
+// const scoreSchema = new mongoose.Schema({
 
-
-// import React, { Component } from "react";
-// import FontAwesomeIcon from "@fortawesome/react-fontawesome";
-
-
-// export default class StarRating extends Component {
-//   static defaultProps = {
-//     minRating: 0,
-//     maxRating: 10,
-//     rating: 5,
-//     starRatio: 2,
-//     limit: 1000
-//   }
-
-//   maxStars() {
-//     let { maxRating, starRatio } = this.props
-//     return Math.ceil(maxRating / starRatio)
-//   }
-
-//   fullStars() {
-//     let { rating, starRatio } = this.props
-//     return Math.floor(rating / starRatio)
-//   }
-
-//   halfStars() {
-//     let { rating, starRatio } = this.props
-//     let x = rating % starRatio
-//     let i = (1 / 2) * starRatio
-//     return x >= i ? 1 : 0
-//   }
-
-//   emptyStars() {
-//     return this.maxStars() - this.fullStars() - this.halfStars()
-//   }
-
-
-//   render() {
-//     let fullStars = this.fullStars()
+//     score: {
+//       type: Number,
+//       enum:[1,2,3,4,5]
+//     },
   
-//     let renderFullStars = () => {
-//       return fullStars !== 0
-//         ? Array(fullStars)
-//           .fill(null)
-//           .map((item, i) => {
-//             return <FontAwesomeIcon className="star" key={`fs${i}`} icon="star" />
-//           })
-//         : ''
+//     votes: {
+//       type: Number,
+//       default: 0,
 //     }
   
-//     return (
-//       <div className="star-rating">
-//         {renderFullStars()}
-//       </div>
-//     )
-//   }
-// }
+//   });
+
+// //Rating question schema
+// const ratingSchema = new mongoose.Schema({
+
+ 
+//     scores: [scoreSchema],
+
+//     //who have voted on this rating question
+//     //for prevent duplicted voting
+//     voted: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+
+//     //who created this rating
+//     createdBy: {
+//         type: mongoose.Schema.Types.ObjectId,
+//         ref: "User"
+//     },
+
+// }, {timestamps: true});
+
+// module.exports = mongoose.model('Rating', ratingSchema);
