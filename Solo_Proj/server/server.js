@@ -19,6 +19,8 @@ app.use(cors({
 app.use(cookieParser());
 
 require("./config/mongoose.config");
+
+// require("./routes/rate.routes")(app);
 require("./routes/user.routes")(app);
 require("./routes/hero.routes")(app);
 // Longhand:

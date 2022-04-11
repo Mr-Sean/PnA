@@ -1,21 +1,22 @@
-const mongoose = require("mongoose");
+// const mongoose = require("mongoose");
 
-const RateSchema = new mongoose.Schema({
+// const RateSchema = new mongoose.Schema({
     
-    stars: {
-        type: Number,
-        enum: [1,2,3,4,5]
-    },
+//     theRating: {
+//         type: Number,
+//         default: 0
+//     },
 
-    votes: {
-        type: Number,
-        default: 0,
-    },
+//     ratedHero: {
+//         type: mongoose.Schema.Types.ObjectId,
+//         ref: "Hero"
+//     }
+    
 
-   
-}, {timestamps: true});
+    
+// }, {timestamps: true});
 
-// ("Rate Collection", RateSchema)
-const Rate = mongoose.model("Rate", RateSchema);
+// // ("Rate Collection", RateSchema)
+// const Rate = mongoose.model("Rate", RateSchema);
 
-module.exports = Rate;
+// module.exports = Rate;

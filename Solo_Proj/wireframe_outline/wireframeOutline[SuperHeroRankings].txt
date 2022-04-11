@@ -18,8 +18,8 @@ Week 1 Features (to show at Review during Week 2)
 - Submit completed wireframe on platform (https://login.codingdojo.com/m/97/6237/44911)
 - Complete Arrays To Do 1 & Arrays To Do 2 assignments
 
-- I'll need to learn how to implement Login and Registrations in MERN. I've previously only done this in Java and Python.
 - I'll need to learn an algo to sort the heroes in order of the fan rankings
+- Implement a star rating system
 
 
 Week 2 Features (to show at first office hour/lecture of Week 3)
@@ -32,4 +32,4 @@ Week 2 Features (to show at first office hour/lecture of Week 3)
 
 
 Product Backlog (If I have more time after completing my MVP, I'll start to work on...)
-- Perhaps I could add a Supervillian Rankings database where a hero becoming a villian (or vice versa) would simple be moved to the other database instead of being deleted outright.
+- Maybe add likes and comments.

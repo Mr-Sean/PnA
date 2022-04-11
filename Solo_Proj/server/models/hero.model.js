@@ -28,7 +28,15 @@ const HeroSchema = new mongoose.Schema({
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
-    }
+    },
+
+    ratings: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Rate"
+        }
+    ],
+
 
    
 }, {timestamps: true});
