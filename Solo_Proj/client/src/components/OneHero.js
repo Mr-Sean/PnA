@@ -5,7 +5,7 @@ import { FaStar } from "react-icons/fa";
 
 
 const colors = {
-    orange: "#FFBASA",
+    orange: "rgb(217 101 31)",
     gray: "#a9a9a9"
 };
 
@@ -22,6 +22,7 @@ const OneHero = (props) => {
 
     const handleClick = value => {
         setCurrentValue(value)
+        console.log("Current value is now", currentValue)
     };
 
     const handleMouseOver = value => {
@@ -88,7 +89,8 @@ const OneHero = (props) => {
                             onClick={() => handleClick(index + 1)}
                             onMouseOver={() => handleMouseOver(index + 1)}
                             onMouseLeave={handleMouseLeave}
-                            color={(hoverValue || currentValue) > index ? colors.orange : colors.gray}
+                            color={hoverValue > index || currentValue > index 
+                                ? colors.orange : colors.gray}
                             style={{
                                 marginRight: 10,
                                 cursor: "pointer"                                
