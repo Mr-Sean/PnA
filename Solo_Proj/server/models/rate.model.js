@@ -1,22 +1,32 @@
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
+const User = require('./user.model');
 
-// const RateSchema = new mongoose.Schema({
+const RateSchema = new mongoose.Schema({
     
-//     theRating: {
-//         type: Number,
-//         default: 0
-//     },
+    starRating: {
+        type: Number,
+        default: 0,
+        enum:[1,2,3,4,5]
+    },
 
-//     ratedHero: {
-//         type: mongoose.Schema.Types.ObjectId,
-//         ref: "Hero"
-//     }
+
+    associatedHero: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Hero"
+    },
     
+    associatedUser: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    },
+
+    // to prevent duplicate ratings
+    rated: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 
     
-// }, {timestamps: true});
+}, {timestamps: true});
 
-// // ("Rate Collection", RateSchema)
-// const Rate = mongoose.model("Rate", RateSchema);
+// ("Rate Collection", RateSchema)
+const Rate = mongoose.model("Rate", RateSchema);
 
-// module.exports = Rate;
+module.exports = Rate;

@@ -8,7 +8,7 @@ import Profile from './components/Profile';
 import LogReg from './views/LogReg';
 
 import {Router} from '@reach/router';
-// import { Router } from 'react-router-dom';
+
 
 import fontawesome from '@fortawesome/fontawesome';
 import solid from '@fortawesome/fontawesome-free-solid';
@@ -22,7 +22,7 @@ function App() {
     <div className="App">
       <Router>
         <LogReg path="/" />
-          {/* <AllHeroes path="/" /> */}
+        
         <AllHeroes path="/home" />
         <OneHero path="/:id" /> 
           {/* id param sent as a req.param to the server */}
