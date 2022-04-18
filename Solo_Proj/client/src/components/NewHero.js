@@ -13,16 +13,19 @@ const NewHero = (props) => {
     const [heroOrigin, setHeroOrigin] = useState("");
     const [heroPowers, setHeroPowers] = useState("");
 
+    const [ratings, setRatings] = useState(0);
+
 
     const submitHandler = (e) => {
         e.preventDefault();
-        axios.post(`http://localhost:8000/api/hero`, 
+        axios.post(`http://localhost:8000/api/heroes`, 
         // below is = to req.body that backend is asking
         // for (see Controller)... create(req.body)
         {
             heroName, //shorthand for "heroName: heroName"
             heroOrigin,
             heroPowers,
+            ratings,
 
         },
         {withCredentials: true}
@@ -88,6 +91,20 @@ const NewHero = (props) => {
                             {
                             errors.heroPowers ? 
                             <span>{errors.heroPowers.message}</span> 
+                            : null
+                            }
+                    </div>      
+                   
+                    <br />
+
+                    <div>
+                        <label htmlFor="ratings">Star Rating: </label>
+                        <input value={ratings} name="ratings" type="text" 
+                            onChange = {(e) => setRatings(e.target.value)} />
+                        <br />
+                            {
+                            errors.ratings ? 
+                            <span>{errors.ratings.message}</span> 
                             : null
                             }
                     </div>      

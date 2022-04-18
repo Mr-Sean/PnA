@@ -22,7 +22,7 @@ const HeroSchema = new mongoose.Schema({
 
     image: {
         type: String,
-        required:  [true, "Hero needs a Picture!"]
+        // required:  [true, "Hero needs a Picture!"]
     },
 
     createdBy: {
@@ -32,8 +32,8 @@ const HeroSchema = new mongoose.Schema({
 
     ratings: [
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Rate"
+            type: Number,
+            
         }
     ],
 

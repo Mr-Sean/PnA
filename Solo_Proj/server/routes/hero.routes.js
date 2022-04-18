@@ -12,4 +12,6 @@ module.exports = (app) => {
 
     app.put("/api/heroes/:id", HeroController.editHero);
     app.delete("/api/heroes/:id", HeroController.deleteHero);
+
+    app.put("/api/ratings/:id", HeroController.addToRatings);
 }

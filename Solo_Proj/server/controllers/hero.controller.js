@@ -110,6 +110,27 @@ module.exports = {
                             res.status(400).json(err);
                     })
         }
-    }
+    },
+
+    addToRatings: (req, res) => {
+        console.log("Hello" ,req.body);
+        Hero.findByIdAndUpdate({_id: req.params.id},
+            {
+                $push: {ratings: req.body}
+            },
+
+            {
+                new: true,
+                useFindAndModify: false
+            })
+            .then((updatedHero) =>{
+                console.log(updatedHero);
+                res.json(updatedHero);
+            })
+            .catch((err) => {
+                console.log(err)
+                // res.status(400).json(err);
+            })
+    },
 
 }

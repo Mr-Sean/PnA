@@ -22,7 +22,7 @@ const OneHero = (props) => {
 
     const handleClick = value => {
         setCurrentValue(value)
-        console.log("Current value is now", currentValue)
+        console.log("Current value is now", value)
     };
 
     const handleMouseOver = value => {
@@ -57,7 +57,17 @@ const OneHero = (props) => {
         });
     };
     
-
+    const addRating = () => {
+        console.log(currentValue);
+        axios.put(`http://localhost:8000/api/ratings/${id}`,
+        currentValue
+        )
+        .then((response) => {
+            console.log(response.data);
+            // setHeroInfo(response.data);
+        })
+        .catch((err) => console.log(err));
+    }
        
     
     return (
@@ -98,6 +108,7 @@ const OneHero = (props) => {
                         />
                     );
                 })}
+                <button onClick={addRating}>Add Star Rating</button>
             </div>
 
         </div>
