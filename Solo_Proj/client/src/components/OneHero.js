@@ -60,7 +60,7 @@ const OneHero = (props) => {
     const addRating = () => {
         console.log(currentValue);
         axios.put(`http://localhost:8000/api/ratings/${id}`,
-        currentValue
+        {ratings: currentValue}
         )
         .then((response) => {
             console.log(response.data);

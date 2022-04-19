@@ -113,10 +113,10 @@ module.exports = {
     },
 
     addToRatings: (req, res) => {
-        console.log("Hello" ,req.body);
+        console.log("Hello" ,req.body.ratings);
         Hero.findByIdAndUpdate({_id: req.params.id},
             {
-                $push: {ratings: req.body}
+                $push: {ratings: req.body.ratings}
             },
 
             {
@@ -124,6 +124,7 @@ module.exports = {
                 useFindAndModify: false
             })
             .then((updatedHero) =>{
+                updatedHero.ratings = 
                 console.log(updatedHero);
                 res.json(updatedHero);
             })
