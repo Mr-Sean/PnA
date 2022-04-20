@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import {Link, navigate} from "@reach/router";
 // import {Link, Route} from "react-router-dom";
 import axios from "axios";
+import avg from "./OneHero";
 
 const AllHeroes = () => {
 
@@ -67,6 +68,8 @@ const AllHeroes = () => {
     //     console.log(localStorage.getItem("userId"));
     //     setUserId(localStorage.getItem("userId")); 
     // },[])
+
+    console.log(avg);
 
     return (
         <div>

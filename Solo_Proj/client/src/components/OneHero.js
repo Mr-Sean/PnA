@@ -4,6 +4,7 @@ import axios from "axios";
 import { FaStar } from "react-icons/fa";
 
 
+
 const colors = {
     orange: "rgb(217 101 31)",
     gray: "#a9a9a9"
@@ -11,6 +12,7 @@ const colors = {
 
 const OneHero = (props) => {
     
+    const avg = ""
     
     const { id } = props;
     const [heroInfo, setHeroInfo] = useState({});
@@ -18,6 +20,7 @@ const OneHero = (props) => {
     const stars = Array(5).fill(0);
     const [currentValue, setCurrentValue] = useState(0);
     const [hoverValue, setHoverValue] = useState(undefined);
+    const [average, setAverage] = useState(0);
 
 
     const handleClick = value => {
@@ -39,6 +42,17 @@ const OneHero = (props) => {
         .get(`http://localhost:8000/api/heroes/${id}`)
         .then((response) => {
             console.log(response.data);
+            console.log(response.data.ratings);
+
+            let total = 0
+            let averageRate
+            for(let i=0; i < response.data.ratings.length; i++) {
+                total+=response.data.ratings[i]
+            }
+            averageRate = total / response.data.ratings.length
+            console.log(averageRate);
+            setAverage(averageRate);
+            avg.push(averageRate);
             setHeroInfo(response.data);
         })
         .catch((err) => console.log(err));
@@ -108,6 +122,7 @@ const OneHero = (props) => {
                         />
                     );
                 })}
+                <p>{Math.round(average)}</p>
                 <button onClick={addRating}>Add Star Rating</button>
             </div>
 
