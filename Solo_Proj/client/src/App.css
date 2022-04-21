@@ -5,6 +5,13 @@ body {
     padding: 0px;
 }
 
+#wrapper {
+    background-color: #e61717e0;
+    /* width: 976px; */
+    width: auto;
+    height: auto;
+    color: white;
+}
 
 a {
     text-decoration: none;

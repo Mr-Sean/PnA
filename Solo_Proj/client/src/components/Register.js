@@ -125,7 +125,8 @@ const Register = (props) => {
                     />
                 </div>
                 <div className="center">
-                    <button>Register Me</button>
+                    <button style={{backgroundColor:"blue", color:"white"}}
+                        >Register Me</button>
                 </div>
             </form>
         </div>

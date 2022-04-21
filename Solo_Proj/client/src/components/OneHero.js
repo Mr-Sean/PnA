@@ -6,7 +6,8 @@ import { FaStar } from "react-icons/fa";
 
 
 const colors = {
-    orange: "rgb(217 101 31)",
+    blue: "#0000ff",
+    // orange: "rgb(217 101 31)",
     gray: "#a9a9a9"
 };
 
@@ -52,7 +53,7 @@ const OneHero = (props) => {
             averageRate = total / response.data.ratings.length
             console.log(averageRate);
             setAverage(averageRate);
-            avg.push(averageRate);
+            // avg.push(averageRate);
             setHeroInfo(response.data);
         })
         .catch((err) => console.log(err));
@@ -85,20 +86,29 @@ const OneHero = (props) => {
        
     
     return (
-        <div style={styles.container}>
+        <div id="wrapper" style={styles.container}>
             <header>
-                <h1>Superhero Rankings</h1>
+                <h1 style={{backgroundColor:"blue", color:"white"}}>Superhero Rankings</h1>
                 <Link to={"/home"}>back to home</Link>
-                <h2>Details about: {heroInfo.heroName}</h2>
+                <h2 style={{color:"white"}}>Details about: {heroInfo.heroName}</h2>
             </header>
             
-            {/* <button onClick={(e) => deleteHero(heroInfo._id)}>BANISH {heroInfo.heroName}</button> */}
+            <button onClick={(e) => deleteHero(heroInfo._id)}
+                    style={{backgroundColor:"blue", color:"white"}}
+                        >BANISH {heroInfo.heroName}</button>
             <br />
             <br />
 
-            <div style={{border:'2px solid black', marginLeft:"20%", marginRight:"20%"}}>
-                <p>Origin: {heroInfo.heroOrigin}</p>
-                <p>Powers: {heroInfo.heroPowers}</p>
+            <div style={{padding: "3%", 
+                        border:'2px solid black', 
+                        marginLeft:"20%", 
+                        marginRight:"20%",
+                        backgroundColor: "blue", 
+                        // color:"white"
+                        }}>
+                <p>{heroInfo.image}</p>
+                <p>ORIGIN: {heroInfo.heroOrigin}</p>
+                <p>POWERS: {heroInfo.heroPowers}</p>
 
             </div>
 
@@ -114,15 +124,16 @@ const OneHero = (props) => {
                             onMouseOver={() => handleMouseOver(index + 1)}
                             onMouseLeave={handleMouseLeave}
                             color={hoverValue > index || currentValue > index 
-                                ? colors.orange : colors.gray}
+                                ? colors.blue : colors.gray}
                             style={{
                                 marginRight: 10,
                                 cursor: "pointer"                                
                             }}
                         />
-                    );
-                })}
-                <p>{Math.round(average)}</p>
+                        );
+                    })}
+                    {/* <p>{Math.round(average)}</p> */}
+                    <p>{(average)}</p>
                 <button onClick={addRating}>Add Star Rating</button>
             </div>
 

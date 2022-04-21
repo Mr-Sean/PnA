@@ -5,7 +5,7 @@ const HeroSchema = new mongoose.Schema({
     heroName: {
         type:String,
         required: [true, "Must have a name entered!"],
-        minLength: [5, "Hero name must have at least 5 characters!"]
+        minLength: [3, "Hero name must have at least 5 characters!"]
     },
 
     heroOrigin: {

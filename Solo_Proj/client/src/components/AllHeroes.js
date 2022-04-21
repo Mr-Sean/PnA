@@ -8,7 +8,6 @@ const AllHeroes = () => {
 
     const [heroList, setHeroList] = useState([]);
 
-    // const {user, setUser} = useState({});
     const [user, setUser] = useState(null);
     
 
@@ -72,11 +71,12 @@ const AllHeroes = () => {
     console.log(avg);
 
     return (
-        <div>
+        <div  id="wrapper">
             <header>
                 <h1>Superhero Rankings</h1>
                 
                 <h2>Behold, Our Mighty Pantheon of Heroes!!!</h2>
+                
                 
                 <Link to={"/new"}>Add a NEW HERO</Link>
 
@@ -92,7 +92,8 @@ const AllHeroes = () => {
                 </div>
             
                 }
-                <button onClick={logout}>Logout</button>
+                <button style={{backgroundColor:"blue", color:"white"}} 
+                        onClick={logout}>Logout</button>
 
 
 

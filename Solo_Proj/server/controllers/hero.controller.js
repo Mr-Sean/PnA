@@ -113,7 +113,7 @@ module.exports = {
     },
 
     addToRatings: (req, res) => {
-        console.log("Hello" ,req.body.ratings);
+        console.log("Testing" ,req.body.ratings);
         Hero.findByIdAndUpdate({_id: req.params.id},
             {
                 $push: {ratings: req.body.ratings}

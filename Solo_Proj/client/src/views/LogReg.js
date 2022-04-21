@@ -8,7 +8,7 @@ const LogReg = (props) => {
  
     return (
 
-        <div>
+        <div id="wrapper">
         <Login/>
         <Register/>
     </div>
