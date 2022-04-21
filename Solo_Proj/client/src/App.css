@@ -11,6 +11,9 @@ body {
     width: auto;
     height: auto;
     color: white;
+    display: "flex";
+    flexDirection: "column";
+    alignItems: "center";
 }
 
 a {

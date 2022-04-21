@@ -23,6 +23,8 @@ const OneHero = (props) => {
     const [hoverValue, setHoverValue] = useState(undefined);
     const [average, setAverage] = useState(0);
 
+    const [messageList, setMessageList] = useState([]);
+    const [content, setContent] = useState("");
 
     const handleClick = value => {
         setCurrentValue(value)
@@ -42,7 +44,10 @@ const OneHero = (props) => {
         axios
         .get(`http://localhost:8000/api/heroes/${id}`)
         .then((response) => {
+            console.log(response);
             console.log(response.data);
+            setMessageList(response.data.messages);
+
             console.log(response.data.ratings);
 
             let total = 0
@@ -53,11 +58,11 @@ const OneHero = (props) => {
             averageRate = total / response.data.ratings.length
             console.log(averageRate);
             setAverage(averageRate);
-            // avg.push(averageRate);
             setHeroInfo(response.data);
         })
         .catch((err) => console.log(err));
     }, [id]);
+
     
     
     const deleteHero = (idFromBelow) => {
@@ -71,6 +76,7 @@ const OneHero = (props) => {
             console.log(err);
         });
     };
+
     
     const addRating = () => {
         console.log(currentValue);
@@ -83,20 +89,73 @@ const OneHero = (props) => {
         })
         .catch((err) => console.log(err));
     }
-       
+    
+    
+    const addAMessage = () => {
+        axios.post("http://localhost:8000/api/messages",
+        {
+            content, // content:content
+            associatedHero: id
+        })
+        .then((res)=>{
+            console.log(res.data);
+            setMessageList([...messageList, res.data])
+        })
+            .catch((err)=> {
+                console.log(err);
+        })
+    }
+    
+
+    const likeMessage = (messageFromBelow)=>{
+        axios.put(`http://localhost:8000/api/messages/${messageFromBelow._id}`,
+        {
+            likes: messageFromBelow.likes + 1
+        }
+        )
+        .then((res)=>{
+            console.log(res.data);
+            
+            let updatedMessageList = messageList.map((message, index)=>{
+                if(message === messageFromBelow){
+                    let messageHolder = {...res.data};
+                    return messageHolder;
+                }
+                return message;
+            });
+            
+            setMessageList(updatedMessageList);
+            // socket.emit("Update_chat", updatedMessageList)
+        })
+    }
     
     return (
         <div id="wrapper" style={styles.container}>
             <header>
-                <h1 style={{backgroundColor:"blue", color:"white"}}>Superhero Rankings</h1>
+                {/* <h1 style={{backgroundColor:"blue", color:"white"}}>Superhero Rankings</h1> */}
+                <h1 style={{color:"blue"}}>Superhero Rankings</h1>
                 <Link to={"/home"}>back to home</Link>
-                <h2 style={{color:"white"}}>Details about: {heroInfo.heroName}</h2>
+                <h3 style={{color:"white"}}>Details about: {heroInfo.heroName}</h3>
             </header>
             
-            <button onClick={(e) => deleteHero(heroInfo._id)}
-                    style={{backgroundColor:"blue", color:"white"}}
-                        >BANISH {heroInfo.heroName}</button>
+            
             <br />
+
+            <input type="text" value={content} onChange={(e)=>setContent(e.target.value)} />
+            <button onClick={addAMessage}>Add Message</button>
+
+            {
+                messageList ?
+                messageList.map((message, index) => (
+                    <div key={index}>
+                            <p>{message.content}</p>
+                            <button onClick={()=>likeMessage(message)}>Like {message.likes}</button>
+                            {/* <button>Like {message.likes}</button> */}
+                        </div>
+                    ))
+                    : null
+                }
+
             <br />
 
             <div style={{padding: "3%", 
@@ -104,9 +163,13 @@ const OneHero = (props) => {
                         marginLeft:"20%", 
                         marginRight:"20%",
                         backgroundColor: "blue", 
-                        // color:"white"
-                        }}>
-                <p>{heroInfo.image}</p>
+                        // color:"white",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                    }}>
+                <img src={heroInfo.image} alt="hero pic" 
+                style={{width:"150px", height:"200px"}}/>
                 <p>ORIGIN: {heroInfo.heroOrigin}</p>
                 <p>POWERS: {heroInfo.heroPowers}</p>
 
@@ -118,24 +181,31 @@ const OneHero = (props) => {
                 {stars.map((_, index) => {
                     return (
                         <FaStar 
-                            key={index}
-                            size={24}
-                            onClick={() => handleClick(index + 1)}
-                            onMouseOver={() => handleMouseOver(index + 1)}
-                            onMouseLeave={handleMouseLeave}
-                            color={hoverValue > index || currentValue > index 
-                                ? colors.blue : colors.gray}
+                        key={index}
+                        size={24}
+                        onClick={() => handleClick(index + 1)}
+                        onMouseOver={() => handleMouseOver(index + 1)}
+                        onMouseLeave={handleMouseLeave}
+                        color={hoverValue > index || currentValue > index 
+                            ? colors.blue : colors.gray}
                             style={{
                                 marginRight: 10,
                                 cursor: "pointer"                                
                             }}
-                        />
+                            />
                         );
                     })}
                     {/* <p>{Math.round(average)}</p> */}
-                    <p>{(average)}</p>
-                <button onClick={addRating}>Add Star Rating</button>
+                    {/* <p>{(average)}</p> */}
+                    {(average)}
+                <p><button onClick={addRating}>Add Star Rating</button></p>
             </div>
+
+            <br />
+
+            <button onClick={(e) => deleteHero(heroInfo._id)}
+            style={{backgroundColor:"blue", color:"white"}}
+            >BANISH {heroInfo.heroName}</button>
 
         </div>
     );

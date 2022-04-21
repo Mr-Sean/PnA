@@ -10,6 +10,7 @@ const AllHeroes = () => {
 
     const [user, setUser] = useState(null);
     
+    const averageArray = [];
 
     
     useEffect(() => {
@@ -17,6 +18,23 @@ const AllHeroes = () => {
             .then((res) => {
                 console.log(res);
                 console.log(res.data);
+                for(let i=0; i < res.data.length; i++) {
+                    console.log(res.data[i])
+                    let total = 0
+                    let averageRate
+                    for(let y=0; y < res.data[i].ratings.length; y++) {
+                        // total+=response.data.ratings[i]
+                        // res.data[i].ratings[y]
+                        console.log(res.data[i].ratings[y])
+                        total+=res.data[i].ratings[y]
+
+                    }
+                    console.log("Line 31")
+                    averageRate = total / res.data[i].ratings.length
+                    console.log(averageRate)
+                    averageArray.push(averageRate)
+                    console.log(averageArray)
+                }
                 setHeroList(res.data);
             })
             .catch((err) => {
@@ -73,7 +91,7 @@ const AllHeroes = () => {
     return (
         <div  id="wrapper">
             <header>
-                <h1>Superhero Rankings</h1>
+                <h1 style={{color:"blue"}}>Superhero Rankings</h1>
                 
                 <h2>Behold, Our Mighty Pantheon of Heroes!!!</h2>
                 
@@ -117,7 +135,14 @@ const AllHeroes = () => {
                             heroList.map((hero, index) => (
                                 <tr key={index}>
                                     
-                                    <td>{hero.heroName}</td>                                    
+                                    <td>{hero.heroName}</td> 
+
+                                    {
+                                    averageArray?
+                                    <td>{averageArray[0]}</td>
+                                    :null
+                                    
+                                    }                                   
                                     
                                     <td>{hero.heroType}</td>                                    
                                     

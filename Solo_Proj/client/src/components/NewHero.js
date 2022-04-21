@@ -46,9 +46,9 @@ const NewHero = (props) => {
 
 
     return (
-        <div>
+        <div id="wrapper">
             <header>
-            <h1>Add New Hero</h1>
+            <h1 style={{color:"blue"}}>Add New Hero</h1>
             <Link to={"/"}>back to home</Link>
             <h2>Induct a New Hero into the Pantheon of Greatness!</h2>     
             </header>

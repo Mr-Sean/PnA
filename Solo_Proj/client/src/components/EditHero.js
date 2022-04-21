@@ -13,6 +13,7 @@ const EditHero = (props) => {
     const [heroName, setHeroName] = useState("");
     const [heroOrigin, setHeroOrigin] = useState("");
     const [heroPowers, setHeroPowers] = useState("");
+    const [image, setImage] = useState("");
 
 
     // useEffect to grab the id
@@ -20,6 +21,8 @@ const EditHero = (props) => {
         axios.get(`http://localhost:8000/api/heroes/${id}`)
             .then((res)=>{
                 console.log(res.data);
+
+                setImage(res.data.image);
 
                 setHeroName(res.data.heroName);
                 
@@ -43,6 +46,7 @@ const EditHero = (props) => {
         // below is = to req.body that backend is asking
             // for (see Controller)... create(req.body)
         {
+            image,
             heroName, //shorthand for "heroName: heroName"
             heroOrigin,
             heroPowers,
@@ -61,9 +65,9 @@ const EditHero = (props) => {
 
 
     return (
-        <div>
+        <div id="wrapper">
             <header>
-            <h1>Superhero Rankings</h1>
+            <h1 style={{color:"blue"}}>Superhero Rankings</h1>
             <Link to={"/"}>back to home</Link>
             <h2>Edit {heroName}</h2>     
             </header>
@@ -110,12 +114,15 @@ const EditHero = (props) => {
                     </div>
                     
 
-                    {/* <p>Skills </p>
                     <div>
-                        <label htmlFor="heroPowers">Hero Powers: </label>
-                        <input value={heroPowers} name="heroPowers" type="text" 
-                            onChange = {(e) => setHeroPowers(e.target.value)} />
-                    </div>       */}
+                    <label>Image</label>
+                    <input value={image} onChange={(e)=>setImage(e.target.value)} type="text" />
+                    {
+                        errors.image?
+                        <span>{errors.image.message}</span>
+                        :null
+                    }            
+                    </div>
                    
                     <br />
 

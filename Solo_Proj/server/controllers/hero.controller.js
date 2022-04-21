@@ -29,6 +29,7 @@ module.exports = {
 
     getOneHero: (req, res) => {
         Hero.findOne({_id: req.params.id})
+            .populate("messages", "content likes")
             .then((oneHero) => {
                 console.log(oneHero);
                 res.json(oneHero)
@@ -42,6 +43,7 @@ module.exports = {
     getAllHeroes: (req, res) => {
         Hero.find({}).collation({locale:"en", strength: 2}).sort({HeroName:1})
             .populate("createdBy", "username email")
+            .populate("messages", "content _id")
             .then((allHeroes) => {
                 res.json(allHeroes)
             })
