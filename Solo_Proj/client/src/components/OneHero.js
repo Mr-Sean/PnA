@@ -197,8 +197,10 @@ const OneHero = (props) => {
                     })}
                     {/* <p>{Math.round(average)}</p> */}
                     {/* <p>{(average)}</p> */}
-                    {(average)}
-                <p><button onClick={addRating}>Add Star Rating</button></p>
+                    {(average).toFixed(1)}
+                <p><button onClick={addRating}
+                    style={{backgroundColor:"blue", color:"white"}}
+                    >Add Star Rating</button></p>
             </div>
 
             <br />

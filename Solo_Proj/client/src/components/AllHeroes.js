@@ -10,7 +10,7 @@ const AllHeroes = () => {
 
     const [user, setUser] = useState(null);
     
-    const averageArray = [];
+    const [averageArray, setAverageArray] = useState([]);
 
     
     useEffect(() => {
@@ -18,6 +18,8 @@ const AllHeroes = () => {
             .then((res) => {
                 console.log(res);
                 console.log(res.data);
+                const arrayHolder = []
+
                 for(let i=0; i < res.data.length; i++) {
                     console.log(res.data[i])
                     let total = 0
@@ -32,9 +34,10 @@ const AllHeroes = () => {
                     console.log("Line 31")
                     averageRate = total / res.data[i].ratings.length
                     console.log(averageRate)
-                    averageArray.push(averageRate)
+                    arrayHolder.push(averageRate)
                     console.log(averageArray)
                 }
+                setAverageArray(arrayHolder)
                 setHeroList(res.data);
             })
             .catch((err) => {
@@ -122,6 +125,7 @@ const AllHeroes = () => {
                     
                     <thead style={{backgroundColor:"blue", color:"white"}}>
                         <tr>
+                            <th>Rating</th>
                             <th>HERO</th>
                             {/* <th>Type</th> */}
                             {/* <th>Actions</th> */}
@@ -135,14 +139,14 @@ const AllHeroes = () => {
                             heroList.map((hero, index) => (
                                 <tr key={index}>
                                     
-                                    <td>{hero.heroName}</td> 
+                                    <td>{averageArray[index].toFixed(1)}</td>
 
-                                    {
-                                    averageArray?
-                                    <td>{averageArray[0]}</td>
-                                    :null
-                                    
-                                    }                                   
+                                    <td><img src={hero.image} alt="hero pic" 
+                                        style={{width:"100px", height:"150px"}}/></td>
+
+                                    <td>{hero.heroName}</td> 
+                                                                      
+                                                                     
                                     
                                     <td>{hero.heroType}</td>                                    
                                     
