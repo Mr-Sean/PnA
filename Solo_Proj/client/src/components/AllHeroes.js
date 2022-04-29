@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import {Link, navigate} from "@reach/router";
 // import {Link, Route} from "react-router-dom";
 import axios from "axios";
-import avg from "./OneHero";
+// import avg from "./OneHero";
 
 const AllHeroes = () => {
 
@@ -10,7 +10,7 @@ const AllHeroes = () => {
 
     const [user, setUser] = useState(null);
     
-    const [averageArray, setAverageArray] = useState([]);
+    // const [averageArray, setAverageArray] = useState([]);
 
     
     useEffect(() => {
@@ -18,6 +18,7 @@ const AllHeroes = () => {
             .then((res) => {
                 console.log(res);
                 console.log(res.data);
+
                 const arrayHolder = []
 
                 for(let i=0; i < res.data.length; i++) {
@@ -38,6 +39,7 @@ const AllHeroes = () => {
                     console.log(averageArray)
                 }
                 setAverageArray(arrayHolder)
+                
                 setHeroList(res.data);
             })
             .catch((err) => {
@@ -89,7 +91,7 @@ const AllHeroes = () => {
     //     setUserId(localStorage.getItem("userId")); 
     // },[])
 
-    console.log(avg);
+    // console.log(avg);
 
     return (
         <div  id="wrapper">

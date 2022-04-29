@@ -1,4 +1,5 @@
 const Hero = require("../models/hero.model");
+// const jwt = require("jsonwebtoken");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user.model");
 const heroRoutes = require("../routes/hero.routes");
@@ -14,6 +15,7 @@ module.exports = {
         // newHeroObject.createdBy = decodedJWT.payload.id
 
         // Shorter version of above code using jwtpayload in jwt.config
+        
         newHeroObject.createdBy = req.jwtpayload.id;
         
         newHeroObject.save()
