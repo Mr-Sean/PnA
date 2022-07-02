@@ -1,0 +1,6 @@
+[submodule "Group Project/Group"]
+	path = Group Project/Group
+	url = https://github.com/odin-shreds-guitar/movie_quiz.git
+[submodule "Group Project/Group Proposal & Project/movie_quiz"]
+	path = Group Project/Group Proposal & Project/movie_quiz
+	url = https://github.com/odin-shreds-guitar/movie_quiz.git
